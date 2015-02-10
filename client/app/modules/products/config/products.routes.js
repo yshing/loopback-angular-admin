@@ -5,7 +5,11 @@ angular.module ('com.module.products')
     .state ('app.products', {
     abstract: true,
     url: '/products',
-    templateUrl: 'modules/products/views/main.html'
+    template: '<section ui-view class="content"></section>',
+    data: {
+      pageTitle: 'Product',
+      pageSubtitle: 'Manage your products here!'
+    }
   })
     .state ('app.products.list', {
     url: '',
