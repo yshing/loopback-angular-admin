@@ -15,7 +15,11 @@ angular.module('com.module.users')
       .state('app.users', {
         abstract: true,
         url: '/users',
-        templateUrl: 'modules/users/views/main.html'
+        template: '<section ui-view class="content"></section>',
+        data: {
+          pageTitle: 'Users',
+          pageSubtitle: 'Manager your users here!'
+        }
       })
       .state('app.users.profile', {
         url: '/profile',

@@ -1,24 +1,36 @@
-<div class="box">
-  <div class="box-body no-padding" style="min-height: 120px;">
-    <table class="table table-bordered table-striped">
-      <tr ng-repeat="user in users">
-        <td>
-          <a href="" ui-sref="app.users.view({id: user.id})">{{user.username}}</a>
-          <span class="text-muted">{{user.email}}</span>
-          <span ng-repeat="role in user.roles" class="label label-default">{{role.name}}</span>
+<rd-widget>
+  <rd-widget-header>
+    <a ui-sref="^.add" class="btn btn-default btn-sm">{{'Add' | translate}}</a>
+  </rd-widget-header>
+  <rd-widget-body classes="no-padding">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <tr ng-repeat="user in users">
+          <td>
+            <a href=""
+               ui-sref="app.users.view({id: user.id})">{{user.username}}</a>
+            <span class="text-muted">{{user.email}}</span>
+            <span ng-repeat="role in user.roles" class="label label-default">{{role.name}}</span>
           <span class="pull-right">
             <div class="btn-group">
-              <button class="btn btn-xs btn-default" ui-sref="app.users.password({ id: user.id })"><i class="fa fa-key"></i></button>
-              <button class="btn btn-xs btn-default" ui-sref="app.users.edit({ id: user.id })"><i class="fa fa-pencil"></i></button>
-              <button class="btn btn-xs btn-danger" ng-click="delete({ id: user.id })"><i class="fa fa-trash-o"></i></button>
+              <button class="btn btn-xs btn-default"
+                      ui-sref="app.users.password({ id: user.id })">
+                <i class="fa fa-key"></i>
+              </button>
+              <button class="btn btn-xs btn-default"
+                      ui-sref="app.users.edit({ id: user.id })">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn btn-xs btn-default"
+                      ng-click="delete({ id: user.id })">
+                <i class="fa fa-trash-o"></i>
+              </button>
             </div>
           </span>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div ng-if="loading" class="overlay"></div>
-  <div ng-if="loading" class="loading-img"></div>
-</div>
-
+          </td>
+        </tr>
+      </table>
+    </div>
+  </rd-widget-body>
+</rd-widget>
 

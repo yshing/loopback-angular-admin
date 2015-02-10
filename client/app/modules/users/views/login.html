@@ -1,25 +1,38 @@
-<div class="lockscreen" style="height: 100%">
-  <div class="form-box" id="login-box">
-        <span class="pull-right image" style="margin: 15px 20px; float: left;">
-            <img gravatar-src="credentials.email" class="img-circle" alt="User Image" gravatar-size="50">
-        </span>
+<div class="row" style="margin-top: 15%">
+  <div class="col-sm-4 col-sm-offset-4">
 
-    <div class="header" style="text-align: left; padding-left: 25px;" translate>Sign In</div>
     <form role="form" ng-submit="login()" method="post">
-      <div class="body bg-gray">
-        <div class="callout callout-danger" ng-if="loginError">
-          <p>{{loginError.message | translate}}</p>
-        </div>
-        <auto:fields fields="schema" data="credentials" options="options"></auto:fields>
-      </div>
-      <div class="footer">
-        <button type="submit" class="btn bg-olive btn-block" translate>Sign in</button>
-        <a href='#/register' class="btn bg-yellow btn-block" translate>Or register</a>
-        <a ng-repeat="provider in authProviders" ng-hide="provider.link" ng-click="socialLogin(provider)"
-           class="btn btn-block btn-{{provider.class}}">
-          {{provider.provider | ucfirst}}
-        </a>
-      </div>
+      <rd-widget>
+        <rd-widget-header icon="fa-lock" title="{{'Sign In' | translate}}">
+          <img gravatar-src="credentials.email" class="img-circle"
+               alt="User Image" gravatar-size="33">
+        </rd-widget-header>
+        <rd-widget-body>
+
+          <div class="callout callout-danger" ng-if="loginError">
+            <p>{{loginError.message | translate}}</p>
+          </div>
+          <auto:fields fields="schema" data="credentials"
+                       options="options"></auto:fields>
+
+        </rd-widget-body>
+
+        <rd-widget-footer>
+          <button type="submit" class="btn btn-success btn-block">
+            {{'Sign in' | translate}}
+          </button>
+          <a href='#/register' class="btn bg-default btn-block">{{'Or register'
+            |
+            translate}}</a>
+          <a ng-repeat="provider in authProviders" ng-hide="provider.link"
+             ng-click="socialLogin(provider)"
+             class="btn btn-block btn-{{provider.class}}">
+            {{provider.provider | ucfirst}}
+          </a>
+        </rd-widget-footer>
+      </rd-widget>
+
     </form>
+
   </div>
 </div>
