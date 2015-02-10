@@ -1,8 +1,11 @@
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
-      <tabset class="nav-tabs-custom">
-        <tab heading="{{ 'Dashboard' | translate }}">
+
+      <rd-widget>
+        <rd-widget-header title="{{ 'Dashboard' | translate }}">
+        </rd-widget-header>
+        <rd-widget-body>
           <div class="row">
             <small-box ng-repeat="box in boxes | orderBy:['-quantity', 'name']"
                        name="{{ box.name }}" href="{{ box.href }}"
@@ -10,8 +13,14 @@
                        quantity="{{ box.quantity }}">
             </small-box>
           </div>
-        </tab>
-        <tab heading="{{ 'Variables' | translate }}">
+        </rd-widget-body>
+      </rd-widget>
+
+      <hr/>
+      <rd-widget>
+        <rd-widget-header title="{{ 'Variables' | translate }}">
+        </rd-widget-header>
+        <rd-widget-body>
           <div class="row">
             <div class="col-md-6">
               <h4 translate>Current user</h4>
@@ -22,8 +31,9 @@
               <pre>{{settings | json}}</pre>
             </div>
           </div>
-        </tab>
-      </tabset>
+        </rd-widget-body>
+      </rd-widget>
+
     </div>
   </div>
 </section>

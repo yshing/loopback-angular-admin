@@ -12,6 +12,9 @@ app.config(function ($stateProvider) {
     data: {
       pageTitle: 'Posts',
       pageSubtitle: 'Manage your posts here!'
+    },
+    ncyBreadcrumb: {
+      parent: 'app.home'
     }
   }).state('app.posts.list', {
     url: '',
@@ -23,15 +26,26 @@ app.config(function ($stateProvider) {
     },
     controller: function ($scope, posts) {
       $scope.posts = posts;
+    },
+    ncyBreadcrumb: {
+      label: 'Posts'
     }
   }).state('app.posts.add', {
     url: '/add',
     templateUrl: 'modules/posts/views/form.html',
-    controller: 'PostsCtrl'
+    controller: 'PostsCtrl',
+    ncyBreadcrumb: {
+      label: 'Add post',
+      parent: 'app.posts.list'
+    }
   }).state('app.posts.edit', {
     url: '/:id/edit',
     templateUrl: 'modules/posts/views/form.html',
-    controller: 'PostsCtrl'
+    controller: 'PostsCtrl',
+    ncyBreadcrumb: {
+      label: 'Edit post',
+      parent: 'app.posts.list'
+    }
   }).state('app.posts.view', {
     url: '/:id',
     templateUrl: 'modules/posts/views/view.html',
@@ -42,6 +56,10 @@ app.config(function ($stateProvider) {
     },
     controller: function ($scope, post) {
       $scope.post = post;
+    },
+    ncyBreadcrumb: {
+      label: 'View post',
+      parent: 'app.posts.list'
     }
   });
 });

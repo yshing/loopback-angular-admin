@@ -23,7 +23,7 @@ angular.module ('com.module.core')
     controller: 'HomeCtrl',
     data: {
       pageTitle: 'Home',
-      pageSubtitle: 'Welkom!'
+      pageSubtitle: 'Welcome!'
     },
     ncyBreadcrumb: {
       label: 'Home'

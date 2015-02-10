@@ -8,16 +8,26 @@ angular.module ('com.module.files')
       data: {
         pageTitle: 'Files',
         pageSubtitle: 'Manage your files here!'
+      },
+      ncyBreadcrumb: {
+        parent: 'app.home'
       }
     })
       .state ('app.files.list', {
         url: '',
         templateUrl: 'modules/files/views/list.html',
-        controller: 'FilesCtrl'
+        controller: 'FilesCtrl',
+        ncyBreadcrumb: {
+          label: 'Files'
+        }
       })
       .state ('app.files.upload', {
         url: '/upload',
         templateUrl: 'modules/files/views/upload.html',
-        controller: 'FilesCtrl'
+        controller: 'FilesCtrl',
+        ncyBreadcrumb: {
+          label: 'Upload',
+          parent: 'app.files.list'
+        }
       });
   });

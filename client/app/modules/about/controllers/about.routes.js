@@ -9,11 +9,18 @@ angular.module('com.module.about')
         data: {
           pageTitle: 'About',
           pageSubtitle: 'All about this application'
+        },
+        ncyBreadcrumb: {
+          label: 'About',
+          parent: 'app.home'
         }
       })
       .state('app.about.index', {
         url: '',
         templateUrl: 'modules/about/views/about.html',
-        controller: 'AboutCtrl'
+        controller: 'AboutCtrl',
+        ncyBreadcrumb: {
+          label: 'About',
+        }
       });
   });

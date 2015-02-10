@@ -1,6 +1,6 @@
 'use strict';
 angular.module('com.module.sandbox')
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('app.sandbox', {
         abstract: true,
@@ -10,66 +10,98 @@ angular.module('com.module.sandbox')
         data: {
           pageTitle: 'Sandbox',
           pageSubtitle: 'Throw your sand around here!'
+        },
+        ncyBreadcrumb: {
+          parent: 'app.home'
         }
       })
       .state('app.sandbox.index', {
         url: '',
-        controller: function($state) {
+        controller: function ($state) {
           $state.go('app.sandbox.autofields');
+        },
+        ncyBreadcrumb: {
+          label: 'Sandbox'
         }
       })
       .state('app.sandbox.forms', {
         url: '/forms',
         templateUrl: 'modules/sandbox/views/forms.html',
-        controller: 'SandboxFormsCtrl'
+        controller: 'SandboxFormsCtrl',
+        ncyBreadcrumb: {
+          label: 'Forms',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.icons', {
         url: '/icons',
         templateUrl: 'modules/sandbox/views/icons.html',
-        controller: 'SandboxIconsCtrl'
+        controller: 'SandboxIconsCtrl',
+        ncyBreadcrumb: {
+          label: 'Icons',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.faker', {
         url: '/faker',
         templateUrl: 'modules/sandbox/views/faker.html',
-        controller: 'SandboxFakerCtrl'
+        controller: 'SandboxFakerCtrl',
+        ncyBreadcrumb: {
+          label: 'Faker',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.coreservice', {
         url: '/coreservice',
         templateUrl: 'modules/sandbox/views/coreservice.html',
-        controller: 'SandboxCoreServiceCtrl'
+        controller: 'SandboxCoreServiceCtrl',
+        ncyBreadcrumb: {
+          label: 'CoreService',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.bootstrap', {
         url: '/bootstrap',
-        templateUrl: 'modules/sandbox/views/bootstrap.html'
+        templateUrl: 'modules/sandbox/views/bootstrap.html',
+        ncyBreadcrumb: {
+          label: 'Bootstrap',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.trees', {
         url: '/trees',
         templateUrl: 'modules/sandbox/views/trees.html',
-        controller: 'SandboxTreesCtrl'
-      })
-      .state('app.sandbox.users', {
-        url: '/users',
-        template: '<pre>{{users | json}}</pre>',
-        controller: function($scope, User) {
-          $scope.users = User.find({}, function(err, data) {
-            console.log(data);
-            return;
-          });
+        controller: 'SandboxTreesCtrl',
+        ncyBreadcrumb: {
+          label: 'Trees',
+          parent: 'app.sandbox.index'
         }
       })
       .state('app.sandbox.dashboard', {
         url: '',
         templateUrl: 'modules/sandbox/views/dashboard.html',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
+        ncyBreadcrumb: {
+          label: 'Dashboad',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.grid', {
         url: '/grid',
         templateUrl: 'modules/sandbox/views/grid.html',
-        controller: 'SandboxGridCtrl'
+        controller: 'SandboxGridCtrl',
+        ncyBreadcrumb: {
+          label: 'Grid',
+          parent: 'app.sandbox.index'
+        }
       })
       .state('app.sandbox.autofields', {
         url: '/autofields',
         templateUrl: 'modules/sandbox/views/autofields.html',
-        controller: 'AutoFieldsCtrl'
+        controller: 'AutoFieldsCtrl',
+        ncyBreadcrumb: {
+          label: 'Autofields',
+          parent: 'app.sandbox.index'
+        }
       });
   });
