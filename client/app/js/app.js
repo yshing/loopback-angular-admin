@@ -32,6 +32,7 @@ angular.module('loopbackApp', [
   'toasty',
   'autofields',
   'gettext',
+  'ncy-angular-breadcrumb',
   'com.module.core',
   'com.module.about',
   'com.module.events',
