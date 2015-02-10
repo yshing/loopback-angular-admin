@@ -6,9 +6,13 @@ app.config(function ($stateProvider) {
   $stateProvider.state('app.posts', {
     abstract: true,
     url: '/posts',
-    templateUrl: 'modules/posts/views/main.html',
+    template: '<section ui-view class="content"></section>',
     controller: 'PostsCtrl',
-    controllerAs: 'ctrl'
+    controllerAs: 'ctrl',
+    data: {
+      pageTitle: 'Posts',
+      pageSubtitle: 'Manage your posts here!'
+    }
   }).state('app.posts.list', {
     url: '',
     templateUrl: 'modules/posts/views/list.html',

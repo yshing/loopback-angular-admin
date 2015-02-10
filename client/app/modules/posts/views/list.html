@@ -1,21 +1,36 @@
-<div class="box" ng-repeat="item in posts">
-  <div class="box-header">
-    <h3 class="box-title">
-      <a href="" ui-sref="^.view({id: item.id})">{{item.title}}</a>
-      <br/>
-      <small>
-        Created:
+<div class="row">
+  <div class="col-sm-12">
+    <span class="pull-right">
+      <a ui-sref="^.add" class="btn btn-default btn-sm" translate>Add</a>
+    </span>
+  </div>
+</div>
+
+<div ng-repeat="item in posts">
+  <rd-widget>
+    <rd-widget-header title="{{item.title}}" ui-sref="^.view({id: item.id})"></rd-widget-header>
+    <rd-widget-body>
+
+      <div class="row">
+        <div class="col-sm-9" style="white-space: pre;">{{item.content}}</div>
+        <div class="col-sm-3">
+          <img ng-if="item.image" class="col-sm-12"
+               ng-src="{{item.image}}?id={{item.id}}"/>
+        </div>
+      </div>
+    </rd-widget-body>
+
+
+    <rd-widget-footer>
+      <span class="text-muted">
         {{item.created | date:'medium'}}
-        <span ng-if="item.created !== item.modified">
-          &middot; modified:
-          {{item.modified | date:'medium'}}
-        </span>
-      </small>
-    </h3>
+        &middot;
+        0 comments
+        &middot;
+        0 likes
+      </span>
 
-    <div class="box-tools pull-right">
-
-      <span class="pull-right btn-group" style="margin-top: 7px;">
+      <span class="pull-right">
         <a href="" class="btn btn-xs btn-default"
            ui-sref="^.edit({id: item.id})">
           <i class="fa fa-pencil"></i>
@@ -26,26 +41,11 @@
         </a>
       </span>
 
-    </div>
-  </div>
-  <div class="box-body">
-    <div class="row">
-      <div class="col-sm-9" style="white-space: pre;">{{item.content}}</div>
-      <div class="col-sm-3">
-        <img ng-if="item.image" ng-src="{{item.image}}?id={{item.id}}"/>
-      </div>
-    </div>
-  </div>
+    </rd-widget-footer>
 
-  <div class="box-footer">
-    <span class="text-muted">
-      {{item.created | date:'medium'}}
-      &middot;
-      0 comments
-      &middot;
-      0 likes
-    </span>
-  </div>
+  </rd-widget>
+
+  <hr/>
 </div>
 
 
@@ -60,3 +60,4 @@
       to add a post!</p>
   </div>
 </div>
+
