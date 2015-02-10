@@ -6,7 +6,11 @@ angular.module('com.module.sandbox')
         abstract: true,
         url: '/sandbox',
         templateUrl: 'modules/sandbox/views/main.html',
-        controller: 'SandboxCtrl'
+        controller: 'SandboxCtrl',
+        data: {
+          pageTitle: 'Sandbox',
+          pageSubtitle: 'Throw your sand around here!'
+        }
       })
       .state('app.sandbox.index', {
         url: '',
