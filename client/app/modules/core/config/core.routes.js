@@ -11,12 +11,23 @@ angular.module ('com.module.core')
     abstract: true,
     url: '/app',
     templateUrl: 'modules/core/views/app.html',
-    controller: 'MainCtrl'
+    controller: 'MainCtrl',
+    data: {
+      pageTitle: '',
+      pageSubtitle: ''
+    }
   })
     .state ('app.home', {
     url: '',
     templateUrl: 'modules/core/views/home.html',
-    controller: 'HomeCtrl'
+    controller: 'HomeCtrl',
+    data: {
+      pageTitle: 'Home',
+      pageSubtitle: 'Welkom!'
+    },
+    ncyBreadcrumb: {
+      label: 'Home'
+    }
   });
   $urlRouterProvider.otherwise ('/router');
 });

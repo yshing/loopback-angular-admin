@@ -1,29 +1,68 @@
-<header class="header">
-    <a class="logo" href="/">{{ getSetting('appName') }}</a>
-    <navbar></navbar>
-</header>
-<div>
-    <div class="wrapper row-offcanvas row-offcanvas-left">
-        <aside class="left-side sidebar-offcanvas">
-            <section class="sidebar">
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img gravatar-src="currentUser.email" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p><a href="" ui-sref="app.users.profile"> {{ 'Hello,' | translate }} {{currentUser.firstName || currentUser.profiles[0].profile.name.givenName}}</a></p>
-                        <p><small><a href="" ui-sref="app.users.profile">{{ currentUser.email }}</a></small></p>
-                    </div>
-                </div>
-                <ul class="sidebar-menu">
-                    <li ng-repeat="item in menuoptions" ui-sref-active="active">
-                        <a class="" href="" ui-sref="{{item.sref}}"><i class="fa fa-fw {{item.icon}}"></i> {{item.name | translate}}</a>
-                    </li>
-                </ul>
-            </section>
-        </aside>
-        <aside ui-view class="right-side at-view-fade-in at-view-fade-out">
+<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
-        </aside>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar">
+      <li class="sidebar-main">
+        <a ng-click="toggleSidebar()">
+          {{ getSetting('appName') }}
+          <span class="menu-icon glyphicon glyphicon-transfer"></span>
+        </a>
+      </li>
+      <li class="sidebar-title"><span>NAVIGATION</span></li>
+      <li ng-repeat="item in menuoptions" ui-sref-active="active"
+          class="sidebar-list">
+        <a href="" ui-sref="{{item.sref}}"><i
+          class="menu-icon fa {{item.icon}}"></i> {{item.name | translate}}</a>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="col-xs-4">
+        <a href="" ui-sref="app.home">{{ 'Home' | translate }}</a>
+      </div>
+      <div class="col-xs-4">
+        <a href="" ui-sref="app.about.index">
+          About
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a href="https://github.com/beeman/loopback-angular-admin"
+           target="_blank">
+          Github
+        </a>
+      </div>
     </div>
+  </div>
+  <!-- End Sidebar -->
+
+  <div id="content-wrapper">
+    <div class="page-content">
+
+      <!-- Header Bar -->
+      <div class="row header">
+        <div class="col-xs-12">
+
+          <navbar></navbar>
+
+          <div class="meta">
+            <div class="page">
+              {{pageTitle | translate}}
+              <small class="text-muted">{{pageSubtitle | translate}}</small>
+            </div>
+            <div class="breadcrumb-links">
+              <a href="" ui-sref="app.home">Home</a> / Dashboard
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Header Bar -->
+
+      <!-- Main Content -->
+      <div ui-view></div>
+
+    </div>
+    <!-- End Page Content -->
+  </div>
+  <!-- End Content Wrapper -->
 </div>
+<!-- End Page Wrapper -->

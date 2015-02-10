@@ -9,7 +9,53 @@ angular.module('com.module.core')
  * @requires CoreService
  * @requires gettextCatalog
  **/
-  .controller('LayoutCtrl', function ($scope, $rootScope, $cookies, CoreService, gettextCatalog) {
+  .controller('LayoutCtrl', function ($scope, $rootScope, $cookieStore, $cookies, $window, $state, CoreService, AppAuth, gettextCatalog) {
+
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
+      if (toState.data !== undefined) {
+        $scope.pageTitle = toState.data.pageTitle;
+        $scope.pageSubtitle = toState.data.pageSubtitle;
+      }
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function () {
+      var stateName = $state.current.name;
+      $scope.stateClassName = stateName.replace(/\./g, '-');
+      console.log($scope.stateClassName);
+    });
+
+
+    /**
+     * Sidebar Toggle & Cookie Control
+     */
+    var mobileView = 992;
+
+    $scope.getWidth = function () {
+      return window.innerWidth;
+    };
+
+    $scope.$watch($scope.getWidth, function (newValue) {
+      if (newValue >= mobileView) {
+        if (angular.isDefined($cookieStore.get('toggle'))) {
+          $scope.toggle = !$cookieStore.get('toggle') ? false : true;
+        } else {
+          $scope.toggle = true;
+        }
+      } else {
+        $window.scrollTo(0,1);
+        $scope.toggle = false;
+      }
+
+    });
+
+    $scope.toggleSidebar = function () {
+      $scope.toggle = !$scope.toggle;
+      $cookieStore.put('toggle', $scope.toggle);
+    };
+
+    window.onresize = function () {
+      $scope.$apply();
+    };
 
     // angular translate
     $scope.locale = {
@@ -50,20 +96,20 @@ angular.module('com.module.core')
       'name': 'Scrolling',
       'class': 'not-fixed'
     }];
-
-    $scope.toggleSidebar = function () {
-      var $ = angular.element;
-      if ($(window).width() <= 992) {
-        $('.row-offcanvas').toggleClass('active');
-        $('.left-side').removeClass('collapse-left');
-        $('.right-side').removeClass('strech');
-        $('.row-offcanvas').toggleClass('relative');
-      } else {
-        // Else, enable content streching
-        $('.left-side').toggleClass('collapse-left');
-        $('.right-side').toggleClass('strech');
-      }
-    };
+    //
+    //$scope.toggleSidebar = function () {
+    //  var $ = angular.element;
+    //  if ($(window).width() <= 992) {
+    //    $('.row-offcanvas').toggleClass('active');
+    //    $('.left-side').removeClass('collapse-left');
+    //    $('.right-side').removeClass('strech');
+    //    $('.row-offcanvas').toggleClass('relative');
+    //  } else {
+    //    // Else, enable content streching
+    //    $('.left-side').toggleClass('collapse-left');
+    //    $('.right-side').toggleClass('strech');
+    //  }
+    //};
 
     $scope.settings = $rootScope.settings;
 

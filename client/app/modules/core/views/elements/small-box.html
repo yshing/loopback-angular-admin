@@ -1,10 +1,15 @@
 <div class="col-lg-3 col-xs-6">
-  <div class="small-box {{ color }}" ui-sref="{{ href }}">
-    <div class="inner">
-      <h3>{{quantity}} &nbsp;</h3>
-      <p>{{ name | translate }}</p>
-    </div>
-    <div class="icon"><i class="ion {{ icon }}"></i></div>
-    <a  class="small-box-footer" >{{ 'More info' | translate }} <i class="fa fa-arrow-circle-right"></i></a>
-  </div>
+  <rd-widget ui-sref="{{ href }}">
+    <rd-widget-body>
+      <div class="widget-icon {{ color }} pull-left">
+        <i class="ion {{ icon }}"></i>
+      </div>
+      <div class="title">{{quantity}} &nbsp;</div>
+      <div class="comment">{{ name | translate }}</div>
+    </rd-widget-body>
+    <rd-widget-footer>
+      <a class="small-box-footer">{{ 'More info' | translate }} <i
+        class="fa fa-arrow-circle-right"></i></a>
+    </rd-widget-footer>
+  </rd-widget>
 </div>

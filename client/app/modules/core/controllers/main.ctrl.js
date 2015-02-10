@@ -12,7 +12,7 @@
  * @requires gettextCatalog
  **/
 angular.module('com.module.core')
-  .controller('MainCtrl', function ($scope, $rootScope, $state, $location, CoreService, User, gettextCatalog) {
+  .controller('MainCtrl', function ($scope, $rootScope, $state, $location, CoreService, User, AppAuth, gettextCatalog) {
 
 
     $scope.currentUser = User.getCurrent();
@@ -21,7 +21,8 @@ angular.module('com.module.core')
 
     $scope.logout = function () {
       User.logout(function () {
-          $state.go('login');
+          delete(AppAuth.currentUser);
+          $state.reload();
           CoreService.toastSuccess(gettextCatalog.getString('Logged out'), gettextCatalog.getString('You are logged out!'));
         }
       )
