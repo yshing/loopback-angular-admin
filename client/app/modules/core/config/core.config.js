@@ -96,3 +96,11 @@ app.config(function (formlyConfigProvider) {
 app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;
 }]);
+
+
+app.config(function ($breadcrumbProvider) {
+  $breadcrumbProvider.setOptions({
+    templateUrl: 'modules/core/views/elements/breadcrumbs.html'
+  });
+});
+

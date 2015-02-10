@@ -1,0 +1,7 @@
+<div class="breadcrumb-links">
+  <span ng-repeat="step in steps" ng-class="{active: $last}" ng-switch="$last || !!step.abstract">
+    <span ng-if="!$first"> / </span>
+    <a ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel | translate}}</a>
+    <span ng-switch-when="true">{{step.ncyBreadcrumbLabel | translate}}</span>
+  </span>
+</div>
