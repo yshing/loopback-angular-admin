@@ -4,7 +4,11 @@ angular.module ('com.module.events')
     $stateProvider.state('app.events', {
       abstract: true,
       url: '/events',
-      templateUrl: 'modules/events/views/main.html'
+      template: '<section ui-view class="content"></section>',
+      data: {
+        pageTitle: 'Events',
+        pageSubtitle: 'Manage your events here!'
+      }
     }).state('app.events.list', {
       url: '',
       templateUrl: 'modules/events/views/list.html',
