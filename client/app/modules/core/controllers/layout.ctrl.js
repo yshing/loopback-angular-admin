@@ -42,7 +42,6 @@ angular.module('com.module.core')
           $scope.toggle = true;
         }
       } else {
-        $window.scrollTo(0,1);
         $scope.toggle = false;
       }
 
@@ -78,39 +77,7 @@ angular.module('com.module.core')
       gettextCatalog.setCurrentLanguage($scope.locale.lang);
     };
 
-    $scope.appName = 'LB-NG-BS';
     $scope.apiUrl = CoreService.env.apiUrl;
-    $scope.appTheme = 'skin-blue';
-    $scope.appThemes = [{
-      'name': 'Black',
-      'class': 'skin-black'
-    }, {
-      'name': 'Blue',
-      'class': 'skin-blue'
-    }];
-    $scope.appLayout = '';
-    $scope.appLayouts = [{
-      'name': 'Fixed',
-      'class': 'fixed'
-    }, {
-      'name': 'Scrolling',
-      'class': 'not-fixed'
-    }];
-    //
-    //$scope.toggleSidebar = function () {
-    //  var $ = angular.element;
-    //  if ($(window).width() <= 992) {
-    //    $('.row-offcanvas').toggleClass('active');
-    //    $('.left-side').removeClass('collapse-left');
-    //    $('.right-side').removeClass('strech');
-    //    $('.row-offcanvas').toggleClass('relative');
-    //  } else {
-    //    // Else, enable content streching
-    //    $('.left-side').toggleClass('collapse-left');
-    //    $('.right-side').toggleClass('strech');
-    //  }
-    //};
-
     $scope.settings = $rootScope.settings;
 
     $rootScope.loadSettings();

@@ -12,22 +12,6 @@ module.exports = function (app) {
       key: 'appName',
       value: 'Loopback Admin'
     }, {
-      type: 'select',
-      key: 'appTheme',
-      value: 'skin-blue',
-      options: [
-        'skin-blue',
-        'skin-black'
-      ]
-    }, {
-      type: 'select',
-      key: 'appLayout',
-      value: 'fixed',
-      options: [
-        'skin-blue',
-        'not-fixed'
-      ]
-    }, {
       type: 'string',
       key: 'formLayout',
       value: 'horizontal'
