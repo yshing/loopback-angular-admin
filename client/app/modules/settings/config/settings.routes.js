@@ -4,7 +4,11 @@ angular.module ('com.module.settings')
     $stateProvider.state ('app.settings', {
       abstract: true,
       url: '/settings',
-      templateUrl: 'modules/settings/views/main.html'
+      template: '<section ui-view class="content"></section>',
+      data: {
+        pageTitle: 'Settings',
+        pageSubtitle: 'Manage your settings here!'
+      }
     })
       .state ('app.settings.list', {
         url: '',
