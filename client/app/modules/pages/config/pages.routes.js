@@ -4,7 +4,11 @@ angular.module ('com.module.pages')
     $stateProvider.state('app.pages', {
       abstract: true,
       url: '/pages',
-      templateUrl: 'modules/pages/views/main.html'
+      template: '<section ui-view class="content"></section>',
+      data: {
+        pageTitle: 'Pages',
+        pageSubtitle: 'Create pages with rich content!'
+      }
     })
       .state('app.pages.list', {
         url: '',
