@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Admin: {{ getSetting('appName') }}</title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css styles/vendor.css -->
@@ -16,11 +16,11 @@
   <!-- include: "type": "css", "files": "modules/**/*.css" -->
   <!-- endbuild -->
 </head>
-<body class="{{getSetting('appTheme') }} {{ getSetting('appLayout') }} " ng-controller="MainCtrl">
+<body class="{{stateClassName}}" ng-controller="MainCtrl">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<div ui-view ng-class="{'full-height': currentUser.id === undefined}"></div>
+<div ui-view></div>
 
 <div ng-controller="toasty-controller">
   <toasty-container toasty-defaults='{"timeout": 3000, "close-button":true, "sound": false}'></toasty-container>

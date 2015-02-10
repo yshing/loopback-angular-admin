@@ -49,3 +49,20 @@
 .nav-tabs > li > a, .nav-tabs > li > a:hover {
   cursor: pointer;
 }
+.content {
+  padding: 5px 15px;
+  overflow: auto;
+}
+body {
+  background: #f8f8f8;
+}
+
+body.router,
+body.register,
+body.login {
+  background: url('../images/blur-background09.jpg') center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
