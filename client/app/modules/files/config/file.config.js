@@ -4,7 +4,7 @@ angular.module('com.module.files')
     $rootScope.addMenu(gettextCatalog.getString('Files'), 'app.files.list', 'fa-file');
 
     $http.get(CoreService.env.apiUrl + '/containers/files/files').success(function (data) {
-      $rootScope.addDashboardBox(gettextCatalog.getString('Files'), 'bg-blue', 'ion-paperclip', data.length, 'app.files.list');
+      $rootScope.addDashboardBox(gettextCatalog.getString('Files'), 'blue', 'ion-paperclip', data.length, 'app.files.list');
     });
 
   });

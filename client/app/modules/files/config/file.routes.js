@@ -4,7 +4,11 @@ angular.module ('com.module.files')
     $stateProvider.state ('app.files', {
       abstract: true,
       url: '/files',
-      templateUrl: 'modules/files/views/main.html'
+      template: '<section ui-view class="content"></section>',
+      data: {
+        pageTitle: 'Files',
+        pageSubtitle: 'Manage your files here!'
+      }
     })
       .state ('app.files.list', {
         url: '',
