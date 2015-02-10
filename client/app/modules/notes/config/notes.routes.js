@@ -5,7 +5,11 @@ app.config(function ($stateProvider) {
   $stateProvider.state('app.notes', {
       abstract: true,
       url: '/notes',
-      templateUrl: 'modules/notes/views/main.html'
+      template: '<section ui-view class="content"></section>',
+      data: {
+        pageTitle: 'Notes',
+        pageSubtitle: 'Manage your notes here'
+      }
     }
   ).state('app.notes.list', {
       url: '',
