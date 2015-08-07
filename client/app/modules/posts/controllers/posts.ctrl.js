@@ -31,24 +31,30 @@ angular.module('com.module.posts')
     $scope.formFields = [{
       key: 'title',
       type: 'text',
-      label: gettextCatalog.getString('Title'),
-      required: true
+      templateOptions: {
+        label: gettextCatalog.getString('Title'),
+        required: true
+      }
     }, {
       key: 'content',
       type: 'textarea',
-      label: gettextCatalog.getString('Content'),
-      required: true
+      templateOptions: {
+        label: gettextCatalog.getString('Content'),
+        required: true
+      }
     }, {
       key: 'image',
       type: 'text',
-      label: gettextCatalog.getString('image'),
-      required: true
+      templateOptions: {
+        label: gettextCatalog.getString('image'),
+        required: true
+      }
     }];
 
     $scope.formOptions = {
-      uniqueFormId: true,
-      hideSubmit: false,
-      submitCopy: gettextCatalog.getString('Save')
+      //+ uniqueFormId: true,
+      // hideSubmit: false,
+      // submitCopy: gettextCatalog.getString('Save')
     };
 
     $scope.onSubmit = function() {

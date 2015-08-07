@@ -20,14 +20,16 @@ angular.module('com.module.products')
     $scope.formFields = [{
       key: 'name',
       type: 'text',
-      label: gettextCatalog.getString('Name'),
-      required: true
+      templateOptions:{
+        label: gettextCatalog.getString('Name'),
+        required: true
+      }
     }];
 
     $scope.formOptions = {
-      uniqueFormId: true,
-      hideSubmit: false,
-      submitCopy: gettextCatalog.getString('Save')
+      //+ uniqueFormId: true,
+      // hideSubmit: false,
+      // submitCopy: gettextCatalog.getString('Save')
     };
 
     $scope.onSubmit = function() {

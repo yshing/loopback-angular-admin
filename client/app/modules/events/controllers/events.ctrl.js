@@ -15,15 +15,15 @@ angular.module('com.module.events')
       }
 
       var out = angular.copy(time);
-      out.setFullYear(date.getFullYear());
-      out.setMonth(date.getMonth());
-      out.setDate(date.getDate());
+      // out.setFullYear(date.getFullYear());
+      // out.setMonth(date.getMonth());
+      // out.setDate(date.getDate());
       return out;
     };
 
     var splitDate = function() {
       var event = $scope.event;
-      event.sDate = event.sTime = event.startTime;
+      event.sDate = event.sTime = Date.parse(event['start_time']);//event.startTime;
       event.eDate = event.eTime = Date.parse(event['end_time']);
       //      event['start_time'] =  event['end_time'] = null;
     };
@@ -77,68 +77,72 @@ angular.module('com.module.events')
 
     $scope.formFields = [{
         key: 'name',
-        label: gettextCatalog.getString('Name'),
         type: 'text',
-        required: true
+        templateOptions:{label: gettextCatalog.getString('Name'),
+                required: true}
       }, {
         key: 'description',
         type: 'text',
-        label: gettextCatalog.getString('Description'),
-        required: true
+        templateOptions: {label: gettextCatalog.getString('Description'),
+                required: true}
       }, {
         key: 'sDate',
-        required: true,
-        label: gettextCatalog.getString('Start Date'),
         type: 'date',
-        format: gettextCatalog.getString('dd/MM/yyyy'),
-        opened: false,
-        switchOpen: dateOpen
+        templateOptions: {required: true,
+                label: gettextCatalog.getString('Start Date'),
+                format: gettextCatalog.getString('dd/MM/yyyy'),
+                opened: false,
+                switchOpen: dateOpen}
       }, {
         key: 'sTime',
-        required: true,
-        label: gettextCatalog.getString('Start Time'),
+        
         type: 'time',
-        hstep: 1,
-        mstep: 5,
-        ismeridian: true
+        templateOptions:{required: true,
+                label: gettextCatalog.getString('Start Time'),
+                hstep: 1,
+                mstep: 5,
+                ismeridian: true}
       }, {
         key: 'eDate',
-        label: gettextCatalog.getString('End'),
         type: 'date',
-        format: gettextCatalog.getString('dd/MM/yyyy'),
-        opened: false,
-        switchOpen: dateOpen
+        templateOptions:{
+          label: gettextCatalog.getString('End'),
+          format: gettextCatalog.getString('dd/MM/yyyy'),
+          opened: false,
+          switchOpen: dateOpen
+        }
       }, {
         key: 'eTime',
-        required: true,
-        label: gettextCatalog.getString('End Time'),
         type: 'time',
-        hstep: 1,
-        mstep: 5,
-        ismeridian: true
+        templateOptions:{
+          required: true,
+          label: gettextCatalog.getString('End Time'),
+          hstep: 1,
+          mstep: 5,
+          ismeridian: true,
+        }
       }
 
     ];
 
     $scope.formOptions = {
-      uniqueFormId: true,
-      hideSubmit: false,
-      submitCopy: gettextCatalog.getString('Save')
+      //+ uniqueFormId: true,
+      // hideSubmit: false,
+      // submitCopy: gettextCatalog.getString('Save')
     };
     $scope.alerts = [];
 
     $scope.onSubmit = function() {
-      var event = $scope.event;
-
+      var event = angular.copy($scope.event);
       event['start_time'] = createDate(event.sDate, event.sTime);
-      event.sDate = null;
-      event.sTime = null;
+      delete event.sDate;
+      delete event.sTime;
 
       event['end_time'] = createDate(event.eDate, event.eTime);
-      event.eDate = null;
-      event.eTime = null;
+      delete event.eDate;
+      delete event.eTime;
 
-      Event.upsert($scope.event, function() {
+      Event.upsert(event, function() {
         CoreService.toastSuccess(gettextCatalog.getString('Event saved'),
           gettextCatalog.getString('Your event is safe with us!'));
         $state.go('^.list');

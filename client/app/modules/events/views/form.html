@@ -13,7 +13,7 @@
             <div class="alert alert-danger" ng-if="addError" translate>Could not add event!</div>
         </div>
         <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-        <formly-form result="event" fields="formFields" options="formOptions" ng-submit="onSubmit()"></formly-form>
+        <formly-form model="event" fields="formFields" options="formOptions" ng-submit="onSubmit()"></formly-form>
     </div>
     <div class="box-footer">
         <div class="controls">

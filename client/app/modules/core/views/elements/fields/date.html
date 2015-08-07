@@ -1,7 +1,7 @@
 <div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
   <label for="{{id}}">
-    {{options.label || 'Text'}}
-    {{options.required ? '*' : ''}}
+    {{options.templateOptions.label || options.label || 'Text'}}
+    {{ ( options.templateOptions.required || options.required ) ? '*' : ''}}
   </label>
   <p class="input-group">
     <input
@@ -12,9 +12,9 @@
        formly-custom-validation="options.validators"
        placeholder="{{options.placeholder}}"
        aria-describedby="{{id}}_description"
-       ng-required="options.required"
-       ng-disabled="options.disabled"
-       ng-model="result[options.key || index]"
+       ng-required="options.templateOptions.required || options.required"
+       ng-disabled="options.templateOptions.disabled || options.disabled"
+       ng-model="model[options.key || index]"
        datepicker-popup="{{options.format}}"
        is-open="options.open"
        close-text="Close"

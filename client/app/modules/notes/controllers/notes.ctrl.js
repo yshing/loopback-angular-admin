@@ -7,19 +7,23 @@ app.controller('NotesCtrl', function($scope, $state, $stateParams, NotesService,
   $scope.formFields = [{
     key: 'title',
     type: 'text',
-    label: gettextCatalog.getString('Title'),
-    required: true
+    templateOptions:{
+      label: gettextCatalog.getString('Title'),
+      required: true
+    }
   }, {
     key: 'body',
     type: 'textarea',
-    label: gettextCatalog.getString('Body'),
-    required: true
+    templateOptions:{
+      label: gettextCatalog.getString('Body'),
+      required: true
+    }
   }];
 
   $scope.formOptions = {
-    uniqueFormId: true,
-    hideSubmit: false,
-    submitCopy: 'Save'
+    //+ uniqueFormId: true,
+    //+ hideSubmit: false,
+    //+ submitCopy: 'Save'
   };
 
   $scope.delete = function(id) {

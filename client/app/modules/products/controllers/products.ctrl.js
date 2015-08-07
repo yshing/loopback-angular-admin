@@ -79,31 +79,41 @@ angular.module('com.module.products')
     $scope.formFields = [{
       key: 'name',
       type: 'text',
-      label: gettextCatalog.getString('Name'),
-      required: true
+      templateOptions: {
+        label: gettextCatalog.getString('Name'),
+        required: true
+      }
     }, {
       key: 'categoryId',
       type: 'text',
-      label: gettextCatalog.getString('Category'),
-      required: true
+      templateOptions:{
+        label: gettextCatalog.getString('Category'),
+        required: true
+      }
     }, {
       key: 'description',
       type: 'text',
-      label: gettextCatalog.getString('Description')
+      templateOptions: {
+        label: gettextCatalog.getString('Description')
+      }
     }, {
       key: 'percentage',
       type: 'text',
-      label: gettextCatalog.getString('Percentage')
+      templateOptions:{
+        label: gettextCatalog.getString('Percentage')
+      }
     }, {
       key: 'price',
       type: 'text',
-      label: gettextCatalog.getString('Price')
+      templateOptions: {
+        label: gettextCatalog.getString('Price')
+      }
     }];
 
     $scope.formOptions = {
-      uniqueFormId: true,
-      hideSubmit: false,
-      submitCopy: gettextCatalog.getString('Save')
+      //+ uniqueFormId: true,
+      // hideSubmit: false,
+      // submitCopy: gettextCatalog.getString('Save')
     };
 
     $scope.onSubmit = function() {

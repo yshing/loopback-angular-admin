@@ -1,20 +1,20 @@
 <div class="form-group" ng-class="{'has-error': options.formField.$invalid}">
   <label for="{{id}}">
-    {{options.label || 'Text'}}
-    {{options.required ? '*' : ''}}
+    {{options.templateOptions.label || options.label || 'Text'}}
+    {{ ( options.templateOptions.required || options.required ) ? '*' : ''}}
   </label>
   <timepicker
-     hour-step="options.hstep || 1"
-     minute-step="options.mstep || 5"
+     hour-step="options.templateOptions.hstep || options.hstep || 1"
+     minute-step="options.templateOptions.mstep || options.mstep || 5"
      show-meridian="ismeridian"
      id="{{id}}"
      formly-dynamic-name="options.key"
      formly-custom-validation="options.validators"
      placeholder="{{options.placeholder}}"
      aria-describedby="{{id}}_description"
-     ng-required="options.required"
-     ng-disabled="options.disabled"
-     ng-model="result[options.key || index]">
+     ng-required="options.templateOptions.required || options.required"
+     ng-disabled="options.templateOptions.disabled || options.disabled"
+     ng-model="model[options.key || index]">
   </timepicker>
   <p id="{{id}}_description" class="help-block"
      ng-if="options.description">{{options.description}}</p>

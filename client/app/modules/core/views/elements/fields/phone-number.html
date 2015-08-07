@@ -1,20 +1,20 @@
 <div class="form-group">
   <label for="{{id}}">
     {{options.label || 'Number'}}
-    {{options.required ? '*' : ''}}
+    {{ ( options.templateOptions.required || options.required ) ? '*' : ''}}
   </label>
   <input type="text"
 	 class="form-control"
 	 id="{{id}}"
 	 placeholder="{{options.placeholder}}"
 	 aria-describedby="{{id}}_description"
-	 ng-required="options.required"
-	 ng-disabled="options.disabled"
+	 ng-required="options.templateOptions.required || options.required"
+	 ng-disabled="options.templateOptions.disabled || options.disabled"
 	 min="{{options.min}}"
 	 max="{{options.max}}"
 	 ng-minlength="{{options.minlength}}"
 	 ng-maxlength="{{options.maxlength}}"
-	 ng-model="result[options.key || index]"
+	 ng-model="model[options.key || index]"
          phone-number
          >
    <p id="{{id}}_description"

@@ -1,7 +1,7 @@
 <div class="radio-group" ng-class="{'has-error': options.formField.$invalid}">
 	<label class="control-label">
 		{{options.label}}
-		{{options.required ? '*' : ''}}
+		{{ ( options.templateOptions.required || options.required ) ? '*' : ''}}
 	</label>
 	<div class="radio"
 		 ng-repeat="(key, option) in options.options">
@@ -12,7 +12,7 @@
 				   id="{{id + '_'+ $index}}"
 				   aria-describedby="{{id}}_description"
 				   ng-value="option.value"
-				   ng-required="options.required"
+				   ng-required="options.templateOptions.required || options.required"
 				   ng-model="$parent.result[$parent.options.key || $parent.index]">
 			{{option.name}}
 		</label>

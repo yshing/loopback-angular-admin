@@ -10,9 +10,7 @@
     </span>
         <h4 class="list-group-item-heading">
             <a href="" ui-sref="^.view({id: item.id})">{{item.name}}</a>
-            <small href="" ui-sref="^.view({id: item.id})">{{item.location}} , {{item.venue.city}},
-                {{item.venue.country}}
-            </small>
+            <small href="" ui-sref="^.view({id: item.id})">{{item.description}}</small>
         </h4>
         <p class="list-group-item-text">
             {{item.start_time | date:'medium'}}

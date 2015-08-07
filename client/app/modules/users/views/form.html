@@ -20,7 +20,7 @@
   <div class="box-body">
     <div class="alert alert-danger" ng-if="addError" translate>Could not add user!</div>
 
-    <formly-form result="user" fields="formFields" options="formOptions" ng-submit="onSubmit()"></formly-form>
+    <formly-form model="user" fields="formFields" options="formOptions" ng-submit="onSubmit()"></formly-form>
     
     <div ng-if="!user.id" class="form-group">
       <label translate>Password</label>
