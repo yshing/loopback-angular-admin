@@ -1,8 +1,7 @@
-<div class="lockscreen" style="height: 100%">
+<!-- <div class="login-box">
   <div class="form-box" id="login-box">
-        <span class="pull-right image" style="margin: 15px 20px; float: left;">
-            <img gravatar-src="credentials.email" class="img-circle" alt="User Image" gravatar-size="50">
-        </span>
+    <span class="pull-right image" style="margin: 15px 20px; float: left;">
+      <img gravatar-src="credentials.email" class="img-circle" alt="User Image" gravatar-size="50"></span>
 
     <div class="header" style="text-align: left; padding-left: 25px;" translate>Sign In</div>
     <form role="form" ng-submit="login()" method="post">
@@ -16,10 +15,66 @@
         <button type="submit" class="btn bg-olive btn-block" translate>Sign in</button>
         <a href='#/register' class="btn bg-yellow btn-block" translate>Or register</a>
         <a ng-repeat="provider in authProviders" ng-hide="provider.link" ng-click="socialLogin(provider)"
-           class="btn btn-block btn-{{provider.class}}">
-          {{provider.provider | ucfirst}}
-        </a>
+           class="btn btn-block btn-{{provider.class}}">{{provider.provider | ucfirst}}</a>
       </div>
     </form>
   </div>
+</div> -->
+<div class="login-box">
+  <div class="login-logo">
+    <a href="/"> <b>Admin</b>
+      LTE
+    </a>
+  </div>
+  <div class="callout callout-danger" ng-if="loginError">
+    <p>{{loginError.message | translate}}</p>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+    <form role="form" ng-submit="login()" method="post">
+      <auto:fields fields="schema" data="credentials" options="options"></auto:fields>
+      <!-- <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div> -->
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;">
+                <input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"> <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+              </div>
+              Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col --> </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a ng-repeat="provider in authProviders" ng-hide="provider.link" ng-click="socialLogin(provider)" href="#" class="btn btn-block btn-social btn-{{provider.class}} btn-flat"> <i class="fa fa-{{provider.class}}"></i>
+        {{provider.provider | ucfirst}}
+      </a>
+      <!-- <a href="#" class="btn btn-block btn-social btn-google btn-flat"> <i class="fa fa-google-plus"></i>
+        Sign in using Google+
+      </a> -->
+    </div>
+    <!-- /.social-auth-links -->
+
+    <a href="#">I forgot my password</a>
+    <br>
+    <a href="#/register" class="text-center">Register a new membership</a>
+
+  </div>
+  <!-- /.login-box-body -->
 </div>

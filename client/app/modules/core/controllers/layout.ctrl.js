@@ -55,14 +55,17 @@ angular.module('com.module.core')
     $scope.toggleSidebar = function() {
       var $ = angular.element;
       if ($(window).width() <= 992) {
-        $('.row-offcanvas').toggleClass('active');
-        $('.left-side').removeClass('collapse-left');
-        $('.right-side').removeClass('strech');
-        $('.row-offcanvas').toggleClass('relative');
+        if ($("body").hasClass('sidebar-open')) {
+          $("body").removeClass('sidebar-open').removeClass('sidebar-collapse').trigger('collapsed.pushMenu');
+        } else {
+          $("body").addClass('sidebar-open').trigger('expanded.pushMenu');
+        }
       } else {
-        // Else, enable content streching
-        $('.left-side').toggleClass('collapse-left');
-        $('.right-side').toggleClass('strech');
+        if ($("body").hasClass('sidebar-collapse')) {
+          $("body").removeClass('sidebar-collapse').trigger('expanded.pushMenu');
+        } else {
+          $("body").addClass('sidebar-collapse').trigger('collapsed.pushMenu');
+        }
       }
     };
 

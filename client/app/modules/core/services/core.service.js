@@ -1,9 +1,42 @@
 'use strict';
-var app = angular.module('com.module.core');
+angular.module('com.module.core')
+.service('CoreService', ['ENV', 'SweetAlert', 'toasty','$filter', function(ENV,
+  SweetAlert, toasty,$filter) {
 
-app.service('CoreService', ['ENV', 'SweetAlert', 'toasty', function(ENV,
-  SweetAlert, toasty) {
+  var adminModules = {};
 
+  adminModules = {
+    schema:{
+      name: 'string',
+      boot: function(){},
+    },
+    list:[],
+    register:function(ModuleRegisterObject){
+      if (ModuleRegisterObject instanceof Object){
+        var found = $filter('filter')(adminModules.list,{name:ModuleRegisterObject.name},true);
+        if (found.length === 0 ){
+          adminModules.list.push(ModuleRegisterObject);
+        }
+      }
+    },
+    boot:function(){
+      adminModules.list = adminModules.list.sort(function (a, b) {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
+      });
+      for (var i = adminModules.list.length - 1; i >= 0; i--) {
+        if(adminModules.list[i].boot instanceof Function){ adminModules.list[i].boot.call() }
+      };
+    }
+  }
+
+  this.adminModules = adminModules;
+  window.A=adminModules;
   this.env = ENV;
 
   this.alert = function(title, text) {
